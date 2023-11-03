@@ -11,21 +11,31 @@ import SwiftyJSON
 struct SupportCenterManager {
     public static var shared = SupportCenterManager()
     
-    static func requestListSupportCategory() -> [SupportCategory]?{
-        guard let data = ListCategorySampleData.sampleData.data(using: .utf8) else { return nil }
-        
-        if let json = try? JSON(data: data){
-            return json["data"].arrayValue.map {
-                return SupportCategory(json: $0)
-            }
+    static func requestListSupportCategory(completion: @escaping(_ result: [SupportCategory]?) -> Void){
+        guard let data = ListCategorySampleData.sampleData.data(using: .utf8) else {
+            completion(nil)
+            return
         }
         
-        return nil
+        var temp = [SupportCategory]()
+        
+        if let json = try? JSON(data: data){
+            temp =  json["data"].arrayValue.map {
+                return SupportCategory(json: $0)
+            }
+            
+            completion(temp)
+            return
+        }
+        
+        
+        
+        completion(nil)
     }
     
     
     static func requestListQandASupport(completion: @escaping(_ result: ListQandASupportModel?) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.25){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25){
             guard let data = QAndASupQuestionSampleData.sampleData.data(using: .utf8) else {
                 completion(nil)
                 return

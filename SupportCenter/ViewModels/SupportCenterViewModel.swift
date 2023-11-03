@@ -9,13 +9,13 @@ import Foundation
 
 
 class SupportCenterViewModel: ObservableObject {
-    @Published  var listSupportCategory: [SupportCategory] = []
+    @Published var listSupportCategory: [SupportCategory]?
     @Published var listQandASupporQuestion: ListQandASupportModel?
     
     func fetchListSupportCategory() {
-        if let safeListSupportCategory = SupportCenterManager.requestListSupportCategory() {
-            self.listSupportCategory = safeListSupportCategory            
-        }
+        SupportCenterManager.requestListSupportCategory(completion: { result in
+            self.listSupportCategory = result
+        })
     }
     
     func fetchQandASupporQuestionData(){

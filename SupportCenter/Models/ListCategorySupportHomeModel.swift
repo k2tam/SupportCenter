@@ -15,14 +15,14 @@ enum FontWeight: String {
 }
 
 
-struct NavigationModelData {
+struct NavigationModelData: Hashable{
     let channel: String
     
     init(json: JSON){
         self.channel = json["channel"].stringValue
     }
 }
-struct NavigationModel {
+struct NavigationModel : Hashable{
     let dataAction: String
     let data: NavigationModelData
     let actionType: String
@@ -34,7 +34,7 @@ struct NavigationModel {
     }
 }
 
-struct SupportCategory: Identifiable {
+struct SupportCategory: Identifiable, Hashable {
     let id = UUID()
     let name: String
     let nameColor: String
@@ -50,19 +50,17 @@ struct SupportCategory: Identifiable {
     let type: String
     
     init(json: JSON) {
-      let name = json["name"].stringValue
-      let nameColor = json["nameColor"].string ?? "#333333"
-      let backgroundColor = json["backgroundColor"].string ?? "#FFFFFF"
-      let fontWeight = FontWeight(rawValue: json["fontWeight"].stringValue) ?? .medium
-      let iconUrl = json["iconUrl"].stringValue
-      let actionJson = NavigationModel(fromJSON: json["action"])
-        
-      let borderWidth =  json["borderWidth"].floatValue
-    
-      let borderColor = json["borderColor"].string ?? "#FFFFFF"
+        let name = json["name"].stringValue
+        let nameColor = json["nameColor"].string ?? "#333333"
+        let backgroundColor = json["backgroundColor"].string ?? "#FFFFFF"
+        let fontWeight = FontWeight(rawValue: json["fontWeight"].stringValue) ?? .medium
+        let iconUrl = json["iconUrl"].stringValue
+        let actionJson = NavigationModel(fromJSON: json["action"])
+        let borderWidth = json["borderWidth"].floatValue
+        let borderColor = json["borderColor"].string ?? "#FFFFFF"
         let roundCorner = json["roundCorner"].float ?? 8.0
         let opacity = json["opacity"].float ?? 1.0
-      let keyTracking = json["keyTracking"].stringValue
+        let keyTracking = json["keyTracking"].stringValue
         let type = json["type"].stringValue
 
         self.name = name

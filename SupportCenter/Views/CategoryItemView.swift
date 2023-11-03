@@ -19,6 +19,15 @@ struct CategoryItemView: View {
                 .foregroundColor(Color(hex: category.nameColor))
                 .lineLimit(2)
             
+            Spacer()
+            
+            KFImage(URL(string: category.iconUrl))
+                .placeholder({
+                    Image(.yellowRightArrow)
+                })
+                .frame(width: 14, height: 12)
+                
+            
         }
         .padding(.top, 12.61)
         .padding(.bottom, 14)

@@ -35,6 +35,7 @@ struct ListCategorySampleData {
              "fontWeight" : "regular"
            },
     
+              
 
            {
              "borderColor" : "",
@@ -56,71 +57,6 @@ struct ListCategorySampleData {
              "roundCorner" : 8,
              "fontWeight" : "regular"
            },
-            
-               {
-                 "borderColor" : "",
-                 "iconUrl" : "",
-                 "action" : {
-                   "dataAction" : "CHAT",
-                   "data" : {
-                     "channel" : "ftel"
-                   },
-                   "actionType" : "go_to_screen"
-                 },
-                 "nameColor" : "#333333",
-                 "backgroundColor" : "#144A6187",
-                 "name" : "Chat với nhân viên CSKH fdkjfladjlfjadskljfakl dfjkladjf",
-                 "borderWidth" : null,
-                 "opacity" : 0.080000000000000002,
-                 "keyTracking" : "Home/Support/Chat",
-                 "type" : "CHAT",
-                 "roundCorner" : 8,
-                 "fontWeight" : "regular"
-               },
-        
-
-               {
-                 "borderColor" : "",
-                 "iconUrl" : "",
-                 "action" : {
-                   "dataAction" : "CHAT",
-                   "data" : {
-                     "channel" : "ftel"
-                   },
-                   "actionType" : "go_to_screen"
-                 },
-                 "nameColor" : "#333333",
-                 "backgroundColor" : "#144A6187",
-                 "name" : "Điểm giao dịch gần nhà",
-                 "borderWidth" : null,
-                 "opacity" : 0.080000000000000002,
-                 "keyTracking" : "Home/Support/Chat",
-                 "type" : "CHAT",
-                 "roundCorner" : 8,
-                 "fontWeight" : "regular"
-               },
-    
-               {
-                 "borderColor" : "",
-                 "iconUrl" : "",
-                 "action" : {
-                   "dataAction" : "CHAT",
-                   "data" : {
-                     "channel" : "ftel"
-                   },
-                   "actionType" : "go_to_screen"
-                 },
-                 "nameColor" : "#333333",
-                 "backgroundColor" : "#144A6187",
-                 "name" : "Điểm giao dịch gần nhà",
-                 "borderWidth" : null,
-                 "opacity" : 0.080000000000000002,
-                 "keyTracking" : "Home/Support/Chat",
-                 "type" : "CHAT",
-                 "roundCorner" : 8,
-                 "fontWeight" : "regular"
-               },
-
           
          ]
        }

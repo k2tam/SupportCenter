@@ -25,6 +25,10 @@
 		05C4D5392AF3626A009992C7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 05C4D5382AF3626A009992C7 /* Kingfisher */; };
 		05C4D53C2AF36353009992C7 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4D53B2AF36353009992C7 /* GridStack.swift */; };
 		05C4D53F2AF36382009992C7 /* HiAppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4D53E2AF36382009992C7 /* HiAppExtension.swift */; };
+		05C4D5422AF38780009992C7 /* UITextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4D5412AF38780009992C7 /* UITextViewWrapper.swift */; };
+		05C4D5452AF3970A009992C7 /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4D5442AF3970A009992C7 /* CustomUITextView.swift */; };
+		05C4D5472AF39D74009992C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4D5462AF39D74009992C7 /* ContentView.swift */; };
+		05C4D5492AF39F10009992C7 /* QandASupportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C4D5482AF39F10009992C7 /* QandASupportItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,10 @@
 		05C4D53A2AF36283009992C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		05C4D53B2AF36353009992C7 /* GridStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		05C4D53E2AF36382009992C7 /* HiAppExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiAppExtension.swift; sourceTree = "<group>"; };
+		05C4D5412AF38780009992C7 /* UITextViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWrapper.swift; sourceTree = "<group>"; };
+		05C4D5442AF3970A009992C7 /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
+		05C4D5462AF39D74009992C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		05C4D5482AF39F10009992C7 /* QandASupportItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QandASupportItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 				05C4D50A2AF360FB009992C7 /* Assets.xcassets */,
 				05C4D53A2AF36283009992C7 /* Info.plist */,
 				05C4D50C2AF360FB009992C7 /* Preview Content */,
+				05C4D5462AF39D74009992C7 /* ContentView.swift */,
 			);
 			path = SupportCenter;
 			sourceTree = "<group>";
@@ -114,10 +123,11 @@
 		05C4D5192AF36142009992C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				05C4D53B2AF36353009992C7 /* GridStack.swift */,
+				05C4D5402AF38754009992C7 /* Commons */,
 				05C4D5272AF361D1009992C7 /* CategoryItemView.swift */,
 				05C4D5282AF361D1009992C7 /* CategoryListView.swift */,
 				05C4D5252AF361A9009992C7 /* QandASupportView.swift */,
+				05C4D5482AF39F10009992C7 /* QandASupportItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +156,16 @@
 				05C4D53E2AF36382009992C7 /* HiAppExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		05C4D5402AF38754009992C7 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				05C4D53B2AF36353009992C7 /* GridStack.swift */,
+				05C4D5412AF38780009992C7 /* UITextViewWrapper.swift */,
+				05C4D5442AF3970A009992C7 /* CustomUITextView.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,17 +250,21 @@
 			files = (
 				05C4D52E2AF36215009992C7 /* AppDelegate.swift in Sources */,
 				05C4D52C2AF36201009992C7 /* SupportCenterScreen.swift in Sources */,
+				05C4D5472AF39D74009992C7 /* ContentView.swift in Sources */,
 				05C4D53C2AF36353009992C7 /* GridStack.swift in Sources */,
 				05C4D5222AF36185009992C7 /* SampleData.swift in Sources */,
 				05C4D5292AF361D1009992C7 /* CategoryItemView.swift in Sources */,
 				05C4D53F2AF36382009992C7 /* HiAppExtension.swift in Sources */,
 				05C4D52A2AF361D1009992C7 /* CategoryListView.swift in Sources */,
+				05C4D5452AF3970A009992C7 /* CustomUITextView.swift in Sources */,
 				05C4D5232AF36185009992C7 /* SupportCenterManager.swift in Sources */,
 				05C4D51E2AF36174009992C7 /* ListCategorySupportHomeModel.swift in Sources */,
 				05C4D5182AF3613C009992C7 /* SupportCenterViewModel.swift in Sources */,
 				05C4D5262AF361A9009992C7 /* QandASupportView.swift in Sources */,
+				05C4D5492AF39F10009992C7 /* QandASupportItem.swift in Sources */,
 				05C4D51F2AF36174009992C7 /* QandASupportModel.swift in Sources */,
 				05C4D5302AF36227009992C7 /* SceneDelegate.swift in Sources */,
+				05C4D5422AF38780009992C7 /* UITextViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
