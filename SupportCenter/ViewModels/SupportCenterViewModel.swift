@@ -11,6 +11,7 @@ import Foundation
 class SupportCenterViewModel: ObservableObject {
     @Published var listSupportCategory: [SupportCategory]?
     @Published var listQandASupporQuestion: ListQandASupportModel?
+    @Published var requestSupportModel: RequestSupportModel?
     
     func fetchListSupportCategory() {
         SupportCenterManager.requestListSupportCategory(completion: { result in
@@ -18,10 +19,18 @@ class SupportCenterViewModel: ObservableObject {
         })
     }
     
+    func fetchSupportRequestsData(){
+        SupportCenterManager.requestSupportRequestsData { result in
+            self.requestSupportModel = result
+        }
+    }
+    
     func fetchQandASupporQuestionData(){
          SupportCenterManager.requestListQandASupport(completion: { result in
             self.listQandASupporQuestion = result
         })
     }
+    
+    
     
 }

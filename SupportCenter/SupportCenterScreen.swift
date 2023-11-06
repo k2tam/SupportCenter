@@ -13,26 +13,30 @@ struct SupportCenterScreen: View {
     @Backport.StateObject private var vm = SupportCenterViewModel()
    
     var body: some View {
-        VStack {
-            
-            if let safeListSupportCategory = vm.listSupportCategory {
-                CategoryListView(categoryList: safeListSupportCategory)
+        ScrollView{
+            VStack {
+                
+                if let safeListSupportCategory = vm.listSupportCategory {
+                    CategoryListView(categoryList: safeListSupportCategory)
+                        .padding(.bottom, 32)
+                }
+                
+                RequestSupportView()
+                    .padding(.bottom, 32)
+
+                if let safeListQandASupporQuestion = vm.listQandASupporQuestion {
+                    QandASupportView(listQandASupport: safeListQandASupporQuestion)
+                }
 
             }
-
-            if let safeListQandASupporQuestion = vm.listQandASupporQuestion {
-                QandASupportView(listQandASupport: safeListQandASupporQuestion)
-                    
-            }
-
+            .padding(.all, 16)
+            .onAppear(perform: {
+                vm.fetchListSupportCategory()
+                vm.fetchSupportRequestsData()
+                vm.fetchQandASupporQuestionData()
+            })
         }
-        .padding(.all, 16)
-        .onAppear(perform: {
-            vm.fetchListSupportCategory()
-            vm.fetchQandASupporQuestionData()
-        })
-        
-        
+        .preferredColorScheme(.light)
         
     }
     

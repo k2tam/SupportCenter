@@ -28,7 +28,6 @@ struct QandASupportView: View {
                 }
             }
         }
-        .padding(.top, 32)
         
     }
 }

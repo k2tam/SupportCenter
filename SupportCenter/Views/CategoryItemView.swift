@@ -18,6 +18,7 @@ struct CategoryItemView: View {
                 .font(.system(size: 14))
                 .foregroundColor(Color(hex: category.nameColor))
                 .lineLimit(2)
+                .multilineTextAlignment(.leading)
             
             Spacer()
             

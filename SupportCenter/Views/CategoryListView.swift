@@ -20,13 +20,19 @@ struct CategoryListView: View {
         VStack {
             
             // Custom Grid View
-            UIGrid(columns: self.columnsCount, list: categoryList, heightItem: 64) { category in
-                CategoryItemView(category: category)
+            UIGrid(columns: self.columnsCount, list: categoryList, horizontalPadding: 16, itemSpace: 16 ,heightItem: 64) { category in
+                Button(action: {
+                    
+                }, label: {
+                    CategoryItemView(category: category)
+
+                })
 
             }
             
             
         }
+        
         
     }
 }
@@ -40,8 +46,11 @@ struct UIGrid<Content: View, T: Hashable>: View {
     
     private var itemCount: Int
     
-    private var heightItem: CGFloat
+    private var horizontalPadding: CGFloat
     
+    private var itemSpace: CGFloat
+
+    private var heightItem: CGFloat
     
     
     // This block you specify in 'UIGrid' is stored here
@@ -49,42 +58,42 @@ struct UIGrid<Content: View, T: Hashable>: View {
     
     
     
-    init(columns: Int, list: [T], heightItem : CGFloat , @ViewBuilder content:@escaping (T) -> Content) {
+    init(columns: Int, list: [T], horizontalPadding: CGFloat, itemSpace: CGFloat ,heightItem : CGFloat , @ViewBuilder content:@escaping (T) -> Content) {
         self.columns = columns
         self.content = content
+        self.horizontalPadding = horizontalPadding
+        self.itemSpace = itemSpace
         self.heightItem = heightItem
         self.itemCount = list.count
         self.setupList(list)
     }
     
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(alignment: .leading,spacing: itemSpace) {
             ForEach(0 ..< self.list.count, id: \.self) { i  in
-                HStack {
+                HStack(spacing: 16) {
                     ForEach(self.list[i], id: \.self) { object in
                         // Your UI defined in the block is called from here.
                         self.content(object)
                             .frame(minHeight: heightItem)
-                            .frame(width: (UIScreen.main.bounds.size.width - 32) / CGFloat(columns))
+                            .frame(maxWidth: (UIScreen.main.bounds.size.width - horizontalPadding * 2) / CGFloat(columns) - (itemSpace / 2) )
 
 
                     }
                     
-                    
-                    
-                    if( (self.itemCount % self.columns) != 0 && i == self.list.count - 1){
-                        let emptyViewToAdd = (self.list.count * self.columns) - itemCount
-                        ForEach(0..<emptyViewToAdd, id: \.self){_ in
-                            Color(.clear)
-                                .frame(height: heightItem)
-                                .frame(minWidth: (UIScreen.main.bounds.size.width - 32) / CGFloat(columns))
-
-                        }
-                       
-                        
-                       
-                    }
-                    
+//                    
+//                    if( (self.itemCount % self.columns) != 0 && i == self.list.count - 1){
+//                        let emptyViewToAdd = (self.list.count * self.columns) - itemCount
+//                        ForEach(0..<emptyViewToAdd, id: \.self){_ in
+//                            Color(.clear)
+//                                .frame(height: heightItem)
+//                                .frame(minWidth: (UIScreen.main.bounds.size.width - horizontalPadding * 2) / CGFloat(columns))
+//
+//                        }
+//                       
+//                        
+//                       
+//                    }
                     
                 }
             }
@@ -117,15 +126,4 @@ struct UIGrid<Content: View, T: Hashable>: View {
 
 
 
-//[
-//    [SupportCenter.SupportCategory(id: 0A814B32-1D5E-415C-BF5A-A16CBADFBC85, name: "Item 1", nameColor: "#333333", backgroundColor: "#144A6187", borderWidth: 0.0, borderColor: "", roundCorner: 8.0, fontWeight: SupportCenter.FontWeight.regular, iconUrl: "https://app.gemoo.com/share/image-annotation/578251335483379712?codeId=DW2K2w3XQRYZL&origin=imageurlgenerator", action: SupportCenter.NavigationModel(dataAction: "CHAT", data: SupportCenter.NavigationModelData(channel: "ftel"), actionType: "go_to_screen"), opacity: 0.08, keyTracking: "Home/Support/Chat", type: "CHAT"),
-//     
-//        SupportCenter.SupportCategory(id: 867D9B23-D81F-4DA3-ACBF-49E63B8D3EE3, name: "Item 2", nameColor: "#333333", backgroundColor: "#144A6187", borderWidth: 0.0, borderColor: "", roundCorner: 8.0, fontWeight: SupportCenter.FontWeight.regular, iconUrl: "", action: SupportCenter.NavigationModel(dataAction: "CHAT", data: SupportCenter.NavigationModelData(channel: "ftel"), actionType: "go_to_screen"), opacity: 0.08, keyTracking: "Home/Support/Chat", type: "CHAT")
-//    
-//        ],
-//    
-//        [SupportCenter.SupportCategory(id: 3CBD7D80-00C6-4443-8592-9A272309C26D, name: "Item 3", nameColor: "#333333", backgroundColor: "#144A6187", borderWidth: 0.0, borderColor: "", roundCorner: 8.0, fontWeight: SupportCenter.FontWeight.regular, iconUrl: "", action: SupportCenter.NavigationModel(dataAction: "CHAT", data: SupportCenter.NavigationModelData(channel: "ftel"), actionType: "go_to_screen"), opacity: 0.08, keyTracking: "Home/Support/Chat", type: "CHAT")
-//        ]
-//        
-//
-//]
+
