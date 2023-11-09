@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class SupportCenterViewModel: ObservableObject {
     @Published var listSupportCategory: [SupportCategory]?
-    @Published var listQandASupporQuestion: ListQandASupportModel?
     @Published var requestSupportModel: RequestSupportModel?
+    @Published var listQandASupporQuestion: ListQandASupportModel?
+
     
     func fetchListSupportCategory() {
         SupportCenterManager.requestListSupportCategory(completion: { result in
@@ -31,6 +33,9 @@ class SupportCenterViewModel: ObservableObject {
         })
     }
     
+
+    
+   
     
     
 }

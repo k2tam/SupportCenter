@@ -165,7 +165,7 @@ struct QAndASupQuestionSampleData {
             "perPage" : 3,
             "ListQuestion" : [
               {
-                "content" : "Để được thông tin về chính sách, ưu đãi hoặc hỗ trợ thủ tục, cước phí và đăng ký dịch vụ bạn có thể gọi điện thoại đến số {key} hello",
+                "content" : "Để được thông tin về chính sách, ưu đãi hoặc hỗ trợ thủ tục, cước phí và đăng ký dịch vụ bạn có thể gọi điện thoại đến số {key}",
                 "id" : 1,
                 "question" : "Tôi có thể gọi đến tổng đài Chăm sóc khách hàng (CSKH) qua số điện thoại nào?",
                 "keyTracking" : "QA1",
@@ -181,7 +181,7 @@ struct QAndASupQuestionSampleData {
                 ]
               },
               {
-                "content" : "",
+                "content" : "hi",
                 "id" : 2,
                 "question" : "Làm sao biết ai đang dùng trộm WiFi nhà tôi?",
                 "keyTracking" : "QA2",

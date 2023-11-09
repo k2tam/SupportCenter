@@ -18,7 +18,7 @@ struct CustomGrid<Content: View, T: Hashable>: View {
     private var itemSpacing: CGFloat
     
     private var horizontalPaddingToScreen: CGFloat
-
+    
     private var heightItem: CGFloat
     
     
@@ -42,18 +42,16 @@ struct CustomGrid<Content: View, T: Hashable>: View {
             ForEach(0 ..< self.list.count, id: \.self) { i  in
                 HStack(spacing: itemSpacing) {
                     ForEach(self.list[i], id: \.self) { object in
-                        // Your UI defined in the block is called from here.
                         self.content(object)
                             .frame(minHeight: heightItem)
                             .frame(width: (UIScreen.main.bounds.size.width - horizontalPaddingToScreen * 2) / CGFloat(columns) - (itemSpacing / 2))
-
-
                     }
-
+                    
                 }
             }
-            
+  
         }
+        
     }
     
     private mutating func setupList(_ list: [T]) {

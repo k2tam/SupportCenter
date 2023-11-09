@@ -25,7 +25,7 @@ struct SupportCenterScreen: View {
                     .padding(.bottom, 32)
 
                 if let safeListQandASupporQuestion = vm.listQandASupporQuestion {
-                    QandASupportView(listQandASupport: safeListQandASupporQuestion)
+                    QandASupportView(listQandASupport: safeListQandASupporQuestion, vm: vm)
                 }
 
             }

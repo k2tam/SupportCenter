@@ -8,11 +8,13 @@
 import SwiftUI
 import Kingfisher
 import UIKit
-
+import SwiftUIBackports
 
 struct QandASupportView: View {
     var listQandASupport: ListQandASupportModel
+    @Backport.StateObject var vm: QAndASupportViewModel
     
+  
     var body: some View {
         VStack(alignment: .leading){
             
@@ -21,13 +23,20 @@ struct QandASupportView: View {
                 .fontWeight(.medium)
         
             
-            ScrollView {
-                ForEach(listQandASupport.listQuestion) { question in
-                    QandASupportItem(qAndASupportModel: question)
-                        .listRowInsets(EdgeInsets())
-                }
+            ForEach(listQandASupport.listQuestion) { question in
+                
+                QandASupportItem(title: question.question,attributedContent: vm.setUpAnswerTextView(question: question),selectedCharacterRangeCallBack:  {
+                    range in
+                    self.vm.handleTapKeys(range: range, attributedContent: vm.setUpAnswerTextView(question: question))
+                    
+                })
+                    .listRowInsets(EdgeInsets())
+                    
             }
+            
+            
         }
+        
         
     }
 }

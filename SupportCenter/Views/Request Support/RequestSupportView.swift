@@ -7,10 +7,27 @@
 
 import SwiftUI
 
-struct RequestSupportView: View {
-//    var requestSupport: RequestSupportModel
-    let samples = ["Kỹ thuật", "Thủ tục, cước phí", "..."]
+enum eSupportType{
+    case technical
+    case payment
+    case customerCare
+    
+    func title() -> String {
+        switch self {
+        case .technical:
+            return "Kỹ thuật"
+        case .payment:
+            return "Thủ tục Cước phí"
+        case .customerCare:
+            return "CSKH"
+        }
+    }
+}
 
+struct RequestSupportView: View {
+    //    var requestSupport: RequestSupportModel
+    let supportRequestTypes: [eSupportType] = [.technical,.payment,.customerCare]
+    
     
     private var TitleView: some View {
         Text("Tạo yêu cầu hỗ trợ")
@@ -18,28 +35,8 @@ struct RequestSupportView: View {
             .fontWeight(.medium)
             .padding(.bottom, 16)
     }
+ 
     
-    private var RequestBtnGridView: some View {
-        CustomGrid(columns: 2, list: samples,itemSpacing: 16,horizontalPaddingToScreen: 32, heightItem: 85) { sample in
-            Button(action: {
-                
-            }, label: {
-                RequestSupportItem(text: sample)
-                    .foregroundColor(.black)
-                
-
-            })
-        }
-        .padding(.bottom, 24)
-    }
-    
-    private var RequestList: some View {
-        
-        VStack(spacing: 16){
-            
-        }
-    }
-   
     private var RequestListTitle: some View {
         HStack{
             Text("Danh sách yêu cầu")
@@ -52,10 +49,10 @@ struct RequestSupportView: View {
                     .font(Font.system(size: 14))
                     .fontWeight(.medium)
                     .foregroundColor(Color(hex: "#3C4E6D"))
-
+                
             }
-
-           
+            
+            
         }
         .frame(height: 36)
     }
@@ -65,14 +62,15 @@ struct RequestSupportView: View {
         
         VStack(alignment: .leading){
             TitleView
-            RequestBtnGridView
+//            RequestBtnGridView
+            
+            RequestSupportStack()
             
             DividerView()
             RequestListTitle
-            RequestList
             
             RequestListView()
-        
+            
             
         }
         .padding(.all, 16)

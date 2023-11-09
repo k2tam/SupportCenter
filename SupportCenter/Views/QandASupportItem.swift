@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct QandASupportItem:  View {
-    var qAndASupportModel: QandASupportModel
+    var title: String
+    var attributedContent: NSMutableAttributedString
+    var selectedCharacterRangeCallBack: ((_ range: NSRange) -> Void)?
 
     @State var isExpanded = false
     
-    @State private var message = "hello there there there /r jfkdjfkdjfkd fjdkfjdk jfdajflkd dajfkdj dfdkjfd fdjf df fdjf ddfjfd dfj dfjnjfkdj fdkfk dkfldf kfdlfk dfkd dfd dfj fff djkfjd fjkdfj "
+    
     @State private var textStyle = UIFont.TextStyle.body
-        
+    @State  var tappedCharacter: String?
+
+    
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Text(qAndASupportModel.question)
+                Text(title)
                     .font(Font.system(size: 16))
-                    
+                
                 Spacer()
                 
                 Image(.arrowDown)
@@ -29,25 +33,25 @@ struct QandASupportItem:  View {
                     })
                     .rotationEffect(isExpanded ? .degrees(-180) : .degrees(0))
                     .padding(.top, 4)
-                    
+                
             }
             .padding(EdgeInsets(top: 13, leading: 0, bottom: 16, trailing: 0))
             .onTapGesture {
-                withAnimation(.easeInOut(duration: 0.3)) {
+                withAnimation(.linear(duration: 0.25)) {
                     isExpanded.toggle()
                 }
             }
             if isExpanded {
-                UITextViewWrapper(text: $message)
+                AttributedText(
+                    attributedContent,
+                    selectedRangeCallBack: self.selectedCharacterRangeCallBack
+            
+                )
             }
-           
-   
         }
         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
-        .onAppear(perform: {
-            replaceKeyContent(content: qAndASupportModel.content)
-        })
-      
+       
+        
     }
     
     
@@ -60,10 +64,7 @@ struct QandASupportItem:  View {
             return Font.Weight.regular
         }
     }
-    
-    func replaceKeyContent(content: String){
-        let components = content.components(separatedBy: "{key}")
-    }
+
     
     func getKeyTextStyle(keyContent: KeyContentModel) -> Text{
         Text(keyContent.text)
@@ -73,5 +74,5 @@ struct QandASupportItem:  View {
     }
     
     
-
+    
 }

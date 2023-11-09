@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var textStyle = UIFont.TextStyle.body
     
     var body: some View {
-        UITextViewWrapper(text: $message)
+        Text("hi")
     }
     
     
